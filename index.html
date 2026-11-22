@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CHUCHU FASHION | Official Store</title>
+
+<style>
+:root {
+  --black: #151515;
+  --gold: #c6a15b;
+  --cream: #f7f4ee;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--black);
+}
+
+header {
+  background: var(--black);
+  color: white;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 23px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.hero {
+  min-height: 350px;
+  padding: 60px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background:
+    linear-gradient(#0008, #0008),
+    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80")
+    center/cover;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 6vw, 60px);
+  margin: 10px 0;
+}
+
+.hero p {
+  font-size: 17px;
+}
+
+button {
+  padding: 12px 17px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.gold-button {
+  background: var(--gold);
+  color: #111;
+  font-weight: bold;
+}
+
+.section {
+  padding: 35px 5%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+input, select, textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 16px;
+  max-width: 100%;
+}
+
+#search {
+  flex: 1;
+  min-width: 180px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(min(100%, 220px), 1fr)
+  );
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  overflow: hidden;
+  border: 1px solid #e6e0d5;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  background: #eee;
+}
+
+.card-info {
+  padding: 15px;
+}
+
+.card-info h3 {
+  margin: 0 0 10px;
+}
+
+.price {
+  color: #9a762e;
+  font-weight: bold;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.edit-button {
+  background: #eee;
+}
+
+.delete-button {
+  background: #922;
+  color: white;
+}
+
+.order-button {
+  background: var(--black);
+  color: white;
+}
+
+.admin {
+  background: white;
+  border: 1px solid #e5dfd4;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.admin h3 {
+  margin-top: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(min(100%, 200px), 1fr)
+  );
+  gap: 12px;
+}
+
+.form-grid input,
+.form-grid select {
+  width: 100%;
+}
+
+#imagePreview {
+  display: none;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  margin-top: 12px;
+}
+
+.notice {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
+
+#emptyMessage {
+  text-align: center;
+  padding: 25px;
+  grid-column: 1 / -1;
+}
+
+footer {
+  background: var(--black);
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+footer a {
+  color: var(--gold);
+}
+
+@media (max-width: 500px) {
+  header {
+    justify-content: center;
+    text-align: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .hero {
+    min-height: 300px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo" id="brandName">CHUCHU FASHION</div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#admin">Manage Store</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <p>WELCOME TO OUR COLLECTION</p>
+  <h1>DEFINE YOUR STYLE</h1>
+  <p>Discover fashion. Express yourself.</p>
+  <a href="#gallery">
+    <button class="gold-button">EXPLORE COLLECTION</button>
+  </a>
+</section>
+
+<section class="section" id="gallery">
+  <h2 class="section-title">FASHION GALLERY</h2>
+
+  <div class="toolbar">
+    <input
+      id="search"
+      type="search"
+      placeholder="Search clothes..."
+      aria-label="Search products"
+    >
+
+    <select id="category" aria-label="Filter by category">
+      <option value="All">All Categories</option>
+      <option value="Men">Men</option>
+      <option value="Women">Women</option>
+      <option value="Accessories">Accessories</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <div class="gallery" id="productGallery"></div>
+</section>
+
+<section class="section" id="admin">
+  <h2 class="section-title">STORE MANAGEMENT</h2>
+
+  <div class="admin">
+    <h3 id="formTitle">Add a New Product</h3>
+
+    <form id="productForm">
+      <div class="form-grid">
+        <input
+          id="productName"
+          type="text"
+          placeholder="Product name"
+          required
+          maxlength="80"
+        >
+
+        <input
+          id="productPrice"
+          type="number"
+          placeholder="Price in ETB"
+          required
+          min="0"
+          step="0.01"
+        >
+
+        <select id="productCategory" required>
+          <option value="Men">Men</option>
+          <option value="Women">Women</option>
+          <option value="Accessories">Accessories</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <input
+          id="productImage"
+          type="file"
+          accept="image/*"
+        >
+      </div>
+
+      <img id="imagePreview" alt="Selected product preview">
+
+      <p class="notice">
+        Choose a product photo from your phone.
+        For a new product, a photo is required.
+      </p>
+
+      <button class="gold-button" type="submit" id="saveButton">
+        Add Product
+      </button>
+
+      <button type="button" class="edit-button"
+        id="cancelEdit" hidden>
+        Cancel Edit
+      </button>
+    </form>
+  </div>
+
+  <div class="admin">
+    <h3>Change Brand Name</h3>
+
+    <form id="brandForm">
+      <input
+        id="newBrandName"
+        type="text"
+        placeholder="Enter your brand name"
+        maxlength="50"
+        required
+      >
+      <button class="gold-button" type="submit">
+        Update Brand
+      </button>
+    </form>
+  </div>
+
+  <p class="notice">
+    Important: Products and brand settings are saved in this
+    browser on this device. This is a starter version, not a
+    shared online admin system. Do not upload private photos.
+  </p>
+</section>
+
+<section class="section" id="contact">
+  <h2 class="section-title">CONTACT OUR STORE</h2>
+  <p style="text-align:center">
+    Interested in a product? Contact us to ask about availability.
+  </p>
+
+  <p style="text-align:center">
+    WhatsApp: <span id="contactNumber">Add your number in the code</span>
+  </p>
+</section>
+
+<footer>
+  <p id="footerBrand">CHUCHU FASHION</p>
+  <p>Fashion is your identity.</p>
+  <p>© <span id="year"></span> All rights reserved.</p>
+</footer>
+
+<script>
+const STORAGE_KEY = "chuchu_fashion_products_v1";
+const BRAND_KEY = "chuchu_fashion_brand_v1";
+
+const gallery = document.getElementById("productGallery");
+const form = document.getElementById("productForm");
+const imageInput = document.getElementById("productImage");
+const preview = document.getElementById("imagePreview");
+
+let products = [];
+let editingId = null;
+let selectedImage = "";
+let previewUrl = "";
+
+function loadProducts() {
+  try {
+    products = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    if (!Array.isArray(products)) products = [];
+  } catch {
+    products = [];
+  }
+
+  const brand = localStorage.getItem(BRAND_KEY) || "CHUCHU FASHION";
+  updateBrand(brand);
+  renderProducts();
+}
+
+function saveProducts() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+    return true;
+  } catch (error) {
+    alert("Storage is full. Use smaller photos or remove products.");
+    return false;
+  }
+}
+
+function updateBrand(name) {
+  document.getElementById("brandName").textContent = name;
+  document.getElementById("footerBrand").textContent = name;
+  document.title = name + " | Official Store";
+  document.getElementById("newBrandName").value = name;
+}
+
+function renderProducts() {
+  gallery.replaceChildren();
+
+  const query = document.getElementById("search").value.toLowerCase();
+  const category = document.getElementById("category").value;
+
+  const filtered = products.filter(product =>
+    product.name.toLowerCase().includes(query) &&
+    (category === "All" || product.category === category)
+  );
+
+  if (filtered.length === 0) {
+    const message = document.createElement("p");
+    message.id = "emptyMessage";
+    message.textContent = "No products found. Add your first product below!";
+    gallery.appendChild(message);
+    return;
+  }
+
+  filtered.forEach(product => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const img = document.createElement("img");
+    img.src = product.image;
+    img.alt = product.name;
+    img.loading = "lazy";
+
+    const info = document.createElement("div");
+    info.className = "card-info";
+
+    const name = document.createElement("h3");
+    name.textContent = product.name;
+
+    const categoryText = document.createElement("p");
+    categoryText.textContent = product.category;
+
+    const price = document.createElement("p");
+    price.className = "price";
+    price.textContent = "ETB " + Number(product.price).toLocaleString();
+
+    const actions = document.createElement("div");
+    actions.className = "card-actions";
+
+    const order = document.createElement("button");
+    order.className = "order-button";
+    order.textContent = "Contact to Order";
+    order.addEventListener("click", () => {
+      alert("Product: " + product.name +
+        ". Please add your real contact details in the code.");
+    });
+
+    const edit = document.createElement("button");
+    edit.className = "edit-button";
+    edit.textContent = "Edit";
+    edit.addEventListener("click", () => editProduct(product.id));
+
+    const remove = document.createElement("button");
+    remove.className = "delete-button";
+    remove.textContent = "Delete";
+    remove.addEventListener("click", () => deleteProduct(product.id));
+
+    actions.append(order, edit, remove);
+    info.append(name, categoryText, price, actions);
+    card.append(img, info);
+    gallery.appendChild(card);
+  });
+}
+
+function editProduct(id) {
+  const product = products.find(item => item.id === id);
+  if (!product) return;
+
+  editingId = id;
+  selectedImage = product.image;
+
+  document.getElementById("productName").value = product.name;
+  document.getElementById("productPrice").value = product.price;
+  document.getElementById("productCategory").value = product.category;
+  document.getElementById("formTitle").textContent = "Edit Product";
+  document.getElementById("saveButton").textContent = "Save Changes";
+  document.getElementById("cancelEdit").hidden = false;
+
+  preview.src = product.image;
+  preview.style.display = "block";
+
+  document.getElementById("admin").scrollIntoView();
+}
+
+function deleteProduct(id) {
+  if (!confirm("Delete this product?")) return;
+
+  const oldProducts = products;
+  products = products.filter(product => product.id !== id);
+
+  if (!saveProducts()) {
+    products = oldProducts;
+    return;
+  }
+
+  renderProducts();
+}
+
+function resetForm() {
+  form.reset();
+  editingId = null;
+  selectedImage = "";
+  preview.style.display = "none";
+  preview.removeAttribute("src");
+  document.getElementById("formTitle").textContent = "Add a New Product";
+  document.getElementById("saveButton").textContent = "Add Product";
+  document.getElementById("cancelEdit").hidden = true;
+}
+
+imageInput.addEventListener("change", () => {
+  const file = imageInput.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    alert("Please select an image file.");
+    imageInput.value = "";
+    return;
+  }
+
+  if (file.size > 1024 * 1024) {
+    alert("Please choose an image smaller than 1 MB for this demo.");
+    imageInput.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    selectedImage = reader.result;
+    preview.src = selectedImage;
+    preview.style.display = "block";
+  };
+
+  reader.readAsDataURL(file);
+});
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const name = document.getElementById("productName").value.trim();
+  const price = Number(document.getElementById("productPrice").value);
+  const category = document.getElementById("productCategory").value;
+
+  if (!name || !Number.isFinite(price) || price < 0) {
+    alert("Please enter a valid product name and price.");
+    return;
+  }
+
+  if (!selectedImage) {
+    alert("Please choose a product photo.");
+    return;
+  }
+
+  const oldProducts = products.map(item => ({ ...item }));
+
+  if (editingId !== null) {
+    products = products.map(product =>
+      product.id === editingId
+        ? { ...product, name, price, category, image: selectedImage }
+        : product
+    );
+  } else {
+    products.push({
+      id: Date.now().toString(),
+      name,
+      price,
+      category,
+      image: selectedImage
+    });
+  }
+
+  if (!saveProducts()) {
+    products = oldProducts;
+    return;
+  }
+
+  resetForm();
+  renderProducts();
+  document.getElementById("gallery").scrollIntoView();
+});
+
+document.getElementById("cancelEdit").addEventListener("click", resetForm);
+
+document.getElementById("search").addEventListener("input", renderProducts);
+document.getElementById("category").addEventListener("change", renderProducts);
+
+document.getElementById("brandForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const name = document.getElementById("newBrandName").value.trim();
+  if (!name) return;
+
+  localStorage.setItem(BRAND_KEY, name);
+  updateBrand(name);
+  alert("Brand name updated in this browser.");
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+loadProducts();
+</script>
+
+</body>
+</html>
