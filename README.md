@@ -7,7 +7,37 @@
     <title>Chuchu Fashion Store</title>
 
     <style>
-        body {
+        body {<section style="padding:25px;background:#f7f4ee;color:#222;border-radius:12px;margin:20px 0;">
+  <h2>💳 Payment Options</h2>
+  <p>Choose your preferred payment method.</p><label for="payment">Select Payment Method:</label>
+<select id="payment" style="display:block;width:100%;padding:12px;margin:12px 0;">
+<option value="">-- Select Payment --</option>
+<option value="cbe">Commercial Bank of Ethiopia (CBE)</option>
+<option value="abyssinia">Bank of Abyssinia</option>
+<option value="awash">Awash Bank</option>
+<option value="dashen">Dashen Bank</option>
+<option value="telebirr">Telebirr</option>
+<option value="mpesa">M-PESA Ethiopia</option>
+</select>
+
+  <p id="payment-info">
+    Select a payment method to see the next steps.
+  </p>
+</section><script>
+document.getElementById("payment").addEventListener("change", function () {
+  const info = {
+    cbe: "Please contact CHUCHU FASHION to receive official CBE payment instructions.",
+    abyssinia: "Please contact CHUCHU FASHION to receive official Bank of Abyssinia payment instructions.",
+    awash: "Please contact CHUCHU FASHION to receive official Awash Bank payment instructions.",
+    dashen: "Please contact CHUCHU FASHION to receive official Dashen Bank payment instructions.",
+    telebirr: "Please contact CHUCHU FASHION for official Telebirr payment instructions.",
+    mpesa: "Please contact CHUCHU FASHION for official M-PESA payment instructions."
+  };
+
+  document.getElementById("payment-info").textContent =
+    info[this.value] || "Select a payment method to see the next steps.";
+});
+</script>
             margin: 0;
             font-family: Arial, sans-serif;
             background: #fffaf7;
